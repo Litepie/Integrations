@@ -1,6 +1,6 @@
 # Litepie Integration Package
 
-A production-ready Laravel package for managing API integrations similar to Facebook/Google applications. This package provides a complete integration management system with multi-tenant support.
+A production-ready Laravel package for managing API integrations and OAuth applications. This package provides a complete integration management system with multi-tenant support.
 
 ## Requirements
 
