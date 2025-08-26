@@ -1,0 +1,44 @@
+/vendor/
+/node_modules/
+/.idea/
+/.vscode/
+/.vagrant/
+/storage/*.key
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.DS_Store
+Thumbs.db
+
+# PHPUnit
+.phpunit.cache/
+coverage/
+
+# Composer
+composer.lock
+
+# IDE
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Archives
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
