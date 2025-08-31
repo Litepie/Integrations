@@ -6,8 +6,9 @@
     "keywords": ["laravel", "integration", "api", "oauth", "multi-tenant"],
     "authors": [
         {
-            "name": "Litepie Team",
-            "email": "support@litepie.com"
+            "name": "Lavalite Team",
+            "email": "support@lavalite.org",
+            "homepage": "https://lavalite.org"
         }
     ],
     "require": {
