@@ -1,5 +1,5 @@
 {
-    "name": "litepie/integration",
+    "name": "litepie/integrations",
     "description": "A Laravel package for managing API integrations similar to Facebook/Google applications",
     "type": "library",
     "license": "MIT",
