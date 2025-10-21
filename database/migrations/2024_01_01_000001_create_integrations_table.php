@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('client_id', 100)->unique();
+            $table->string('client_id', 100);
             $table->string('client_secret', 100);
             $table->json('redirect_uris')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
@@ -37,20 +37,17 @@ return new class extends Migration
             // Rate limiting
             $table->json('rate_limits')->nullable()->comment('Rate limiting configuration per scope/permission');
             
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->json('metadata')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->index(['user_id', 'status']);
-            $table->index('client_id');
-            $table->index('status');
-            $table->index('role');
-
-            $table->foreign('user_id')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('cascade');
+            // Unique and composite indexes with descriptive names
+            $table->unique('client_id', 'integrations_client_id_unique');
+            $table->index(['user_id', 'status'], 'integrations_user_status_idx');
+            $table->index('status', 'integrations_status_idx');
+            $table->index('role', 'integrations_role_idx');
+            $table->index('created_at', 'integrations_created_at_idx');
         });
 
         // Create integration_secrets table
@@ -66,10 +63,12 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-            $table->index(['integration_id', 'status']);
-            $table->index('secret_key');
-            $table->index('status');
-            $table->index('expires_at');
+            // Unique and composite indexes with descriptive names
+            $table->unique('secret_key', 'integration_secrets_secret_key_unique');
+            $table->index(['integration_id', 'status'], 'integration_secrets_integration_status_idx');
+            $table->index('status', 'integration_secrets_status_idx');
+            $table->index('expires_at', 'integration_secrets_expires_at_idx');
+            $table->index('last_used_at', 'integration_secrets_last_used_at_idx');
         });
     }
 
